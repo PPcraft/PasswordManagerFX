@@ -152,9 +152,7 @@ public class ControllerMain {
     }
 
     public void update(ActionEvent actionEvent) {
-        if (!path.equals("") & !pass.equals("")){
             updateRun();
-        }
     }
 
     public void delete(ActionEvent actionEvent) {
@@ -236,13 +234,15 @@ public class ControllerMain {
     }
 
     private void updateRun(){
-        Site selectedSite = (Site) tableSitesDirectory.getSelectionModel().getSelectedItem();
-        idButton = String.valueOf(Check.checkAddress(sitesDirectoryImpl.getSiteList(), selectedSite.getAddress()));
-        if (selectedSite != null){
-            controllerOperation.setSite((Site) tableSitesDirectory.getSelectionModel().getSelectedItem());
-            controllerOperation.setSiteList(sitesDirectoryImpl.getSiteList());
-            showEditDialog();
-            prepareData.writeSites(sitesDirectoryImpl.getSiteList());
+        if (!path.equals("") & !pass.equals("")){
+            Site selectedSite = (Site) tableSitesDirectory.getSelectionModel().getSelectedItem();
+            if (selectedSite != null){
+                idButton = String.valueOf(Check.checkAddress(sitesDirectoryImpl.getSiteList(), selectedSite.getAddress()));
+                controllerOperation.setSite((Site) tableSitesDirectory.getSelectionModel().getSelectedItem());
+                controllerOperation.setSiteList(sitesDirectoryImpl.getSiteList());
+                showEditDialog();
+                prepareData.writeSites(sitesDirectoryImpl.getSiteList());
+            }
         }
     }
 
