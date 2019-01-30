@@ -2,14 +2,20 @@ package ppcraft.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import static ppcraft.main.Main.idButton;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class ControllerClear {
+import static ppcraft.main.Main.*;
+
+public class ControllerClear implements Initializable {
 
     @FXML
     private Label contentLabel;
@@ -17,6 +23,9 @@ public class ControllerClear {
     private Button yesBtn;
     @FXML
     private Button noBtn;
+
+    private ResourceBundle resourceBundle;
+    private FXMLLoader fxmlLoader = new FXMLLoader();
 
     public void yes(ActionEvent actionEvent) {
             idButton = "yes";
@@ -29,12 +38,14 @@ public class ControllerClear {
         stage.close();
     }
 
-    @FXML
-    private void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.resourceBundle = resources;
+        fxmlLoader.setResources(ResourceBundle.getBundle(LOCALEPATH, LOCALLANG));
         if ("clear".equals(idButton)) {
-            contentLabel.setText("Вы действительно хотите очистить файл?");
+            contentLabel.setText(fxmlLoader.getResources().getString("label_clear_all"));
         } else if ("delete".equals(idButton)) {
-            contentLabel.setText("Вы действительно хотите удалить запись?");
+            contentLabel.setText(fxmlLoader.getResources().getString("label_clear_one"));
         }
     }
 }

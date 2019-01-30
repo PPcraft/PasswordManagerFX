@@ -8,7 +8,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ppcraft.controllers.ControllerClear">
    <children>
-      <Label fx:id="contentLabel" text="Вы действительно хотите очистить файл?">
+      <Label fx:id="contentLabel" text="%label_clear_all">
          <font>
             <Font size="14.0" />
          </font>
@@ -18,12 +18,12 @@
       </Label>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="yesBtn" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#yes" prefWidth="100.0" text="Да">
+            <Button fx:id="yesBtn" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#yes" prefWidth="100.0" text="%yesBtn">
                <HBox.margin>
                   <Insets bottom="10.0" left="25.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="noBtn" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#no" prefWidth="100.0" text="Нет">
+            <Button fx:id="noBtn" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#no" prefWidth="100.0" text="%noBtn">
                <HBox.margin>
                   <Insets bottom="10.0" left="50.0" right="20.0" top="20.0" />
                </HBox.margin>

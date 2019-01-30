@@ -9,11 +9,11 @@
    <children>
       <AnchorPane prefHeight="50.0">
          <children>
-            <Button fx:id="delete" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#delete" text="Удалить" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="chooseFile" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#chooseFile" text="Выбрать файл" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="clearFile" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#clearFile" text="Очистить" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="add" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#add" text="Добавить" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="update" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#update" text="Изменить" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="delete" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#delete" text="%delete" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="chooseFile" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#chooseFile" text="%choose_file" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="clearFile" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#clearFile" text="%clear_file" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="add" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#add" text="%add" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="update" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#update" text="%update" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="10.0" />
             <Separator layoutX="268.0" layoutY="-8.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Separator orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Separator orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -25,7 +25,7 @@
       <AnchorPane prefHeight="50.0">
          <children>
             <TextField fx:id="textSearch" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0" />
-            <Button fx:id="search" mnemonicParsing="false" onAction="#search" text="Поиск" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="search" mnemonicParsing="false" onAction="#search" text="%search" AnchorPane.rightAnchor="0.0" />
          </children>
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -35,9 +35,9 @@
          <children>
             <TableView fx:id="tableSitesDirectory" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="address" prefWidth="212.0" text="Адресс сайта (без www, http, https)" />
-                <TableColumn fx:id="login" prefWidth="98.0" text="Логин" />
-                <TableColumn fx:id="password" prefWidth="187.0" text="Пароль" />
+                <TableColumn fx:id="address" prefWidth="212.0" text="%address" />
+                <TableColumn fx:id="login" prefWidth="98.0" text="%login" />
+                <TableColumn fx:id="password" prefWidth="187.0" text="%password" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -53,7 +53,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" />
          </VBox.margin>
          <children>
-            <Label fx:id="info" text="Файл с паролями не выбран!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="info" text="%not_selected" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

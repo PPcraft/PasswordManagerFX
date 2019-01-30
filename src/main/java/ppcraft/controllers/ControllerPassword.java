@@ -3,6 +3,8 @@ package ppcraft.controllers;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -13,9 +15,13 @@ import javafx.stage.WindowEvent;
 import ppcraft.crypto.Crypto;
 import ppcraft.operations.WriteFile;
 
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static ppcraft.main.Main.*;
 
-public class ControllerPassword {
+public class ControllerPassword implements Initializable {
     @FXML
     private PasswordField passwordText;
     @FXML
@@ -24,6 +30,9 @@ public class ControllerPassword {
     private Button cancelBtn;
 
     private String cryptoPass;
+
+    private ResourceBundle resourceBundle;
+    private FXMLLoader fxmlLoader = new FXMLLoader();
 
 
 
@@ -48,10 +57,11 @@ public class ControllerPassword {
         stage.close();
     }
 
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         pass = "";
-
+        this.resourceBundle = resources;
+        fxmlLoader.setResources(ResourceBundle.getBundle(LOCALEPATH, LOCALLANG));
     }
 
     private void newPassword(ActionEvent actionEvent){
@@ -69,10 +79,10 @@ public class ControllerPassword {
             pass = "";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.initStyle(StageStyle.UTILITY);
-            alert.setTitle("Пароль введен не верно!");
+            alert.setTitle(fxmlLoader.getResources().getString("wrong_password"));
             alert.setAlertType(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Пароль введен не верно!");
+            alert.setContentText(fxmlLoader.getResources().getString("wrong_password"));
             alert.showAndWait();
             passwordText.setText("");
         }

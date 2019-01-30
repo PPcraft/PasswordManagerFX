@@ -2,6 +2,8 @@ package ppcraft.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,11 +13,14 @@ import javafx.stage.StageStyle;
 import ppcraft.objects.Site;
 import ppcraft.operations.Check;
 
-import static ppcraft.main.Main.idButton;
-
+import java.net.URL;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class ControllerOperation {
+import static ppcraft.main.Main.*;
+
+public class ControllerOperation implements Initializable {
     @FXML
     private TextField address;
     @FXML
@@ -30,16 +35,19 @@ public class ControllerOperation {
     private Site site;
     private List<Site> siteList;
 
+    private ResourceBundle resourceBundle;
+    private FXMLLoader fxmlLoader = new FXMLLoader();
+
     public void ok(ActionEvent actionEvent) {
         if (address.getText().equals("")){
-            errorMessage("Не введен адресс сайта!");
+            errorMessage(fxmlLoader.getResources().getString("error_not_site"));
         }else if(login.getText().equals("")) {
-            errorMessage("Не введен логин!");
+            errorMessage(fxmlLoader.getResources().getString("error_not_login"));
         }else if (password.getText().equals("")) {
-            errorMessage("Не введен пароль!");
+            errorMessage(fxmlLoader.getResources().getString("error_not_password"));
         }else if (Check.checkAddress(siteList,address.getText()) < siteList.size()){
             if (!idButton.equals(String.valueOf(Check.checkAddress(siteList,address.getText())))){
-                errorMessage("Сайт "+ address.getText() + " уже существует!");
+                errorMessage(address.getText() + fxmlLoader.getResources().getString("error_exist"));
             }else {
                 writeInSite(actionEvent);
             }
@@ -68,12 +76,14 @@ public class ControllerOperation {
         return site;
     }
 
-    @FXML
-    private void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.resourceBundle = resources;
+        fxmlLoader.setResources(ResourceBundle.getBundle(LOCALEPATH, LOCALLANG));
     }
 
     private void writeInSite(ActionEvent actionEvent){
-        site.setAddress(address.getText());
+        site.setAddress(address.getText().toLowerCase());
         site.setLogin(login.getText());
         site.setPassword(password.getText());
         cancel(actionEvent);
@@ -82,7 +92,7 @@ public class ControllerOperation {
     private void errorMessage(String textError){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Не все поля заполнены");
+        alert.setTitle(fxmlLoader.getResources().getString("error_operation"));
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setContentText(textError);
